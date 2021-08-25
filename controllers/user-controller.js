@@ -42,8 +42,8 @@ async function signIn(req, res) {
       if (match) {
         const jwt = await generateJWT(existingUser);
         const user = existingUser.toObject();
-        user.token = jwt;
-        res.send(user);
+
+        res.send({ user, token: jwt });
       } else {
         return res.status(400).send();
       }
