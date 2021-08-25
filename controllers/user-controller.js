@@ -19,9 +19,10 @@ async function signUp(req, res) {
       });
       await user.save();
       const jwt = await generateJWT(user);
-      user.token = jwt;
+
       return res.status(201).send({
         user,
+        token: jwt,
       });
     } catch (error) {
       console.log(error);

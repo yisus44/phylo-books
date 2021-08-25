@@ -5,6 +5,6 @@ const cors = require('cors');
 
 const app = require('./app');
 app.use(cors());
-app.listen(process.env.PORT, () => {
-  console.log('Server on port', process.env.PORT);
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Server on port', process.env.PORT || 3000);
 });
