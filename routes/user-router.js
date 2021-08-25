@@ -11,4 +11,8 @@ userRouter.post('/api/users/signin', signIn);
 userRouter.get('/api/users/me', auth, getUser);
 userRouter.get('/api/users/me/orders', auth, async function (req, res) {});
 
+userRouter.get('/', function (req, res) {
+  res.send('hola esquizo');
+});
+
 module.exports = userRouter;
