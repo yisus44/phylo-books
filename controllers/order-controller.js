@@ -38,8 +38,8 @@ async function getAllOrders(req, res) {
       products.push({ product, order });
     }
   }
-
-  res.status(200).send(products);
+  console.log(products);
+  return res.status(200).send(products);
 }
 
 module.exports = {
