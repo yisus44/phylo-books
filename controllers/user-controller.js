@@ -57,8 +57,9 @@ async function signIn(req, res) {
 
 async function getUser(req, res) {
   //It retribies the info of the database just in case the token has outdated info
-  const { id } = req.user;
-  return await User.findById({ id });
+  const { _id } = req.user;
+  const user = await User.findById({ _id });
+  return res.send({ user });
 }
 
 module.exports = { signUp, signIn, getUser };
