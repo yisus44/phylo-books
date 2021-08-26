@@ -35,7 +35,7 @@ async function getAllOrders(req, res) {
   for (let order of orders) {
     const product = await Product.findOne({ _id: order.product });
     if (product) {
-      products.push(product);
+      products.push({ product, order });
     }
   }
 
