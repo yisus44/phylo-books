@@ -28,8 +28,6 @@ async function checkout(req, res) {
 }
 
 async function getAllOrders(req, res) {
-  //Maybe we can try to delete the forloop and update the condition to
-  //products=Product.findAll({_id:order.product })
   const { _id } = req.user;
   const orders = await Order.find({ user: _id });
   const products = [];
@@ -40,7 +38,6 @@ async function getAllOrders(req, res) {
       products.push({ product, order });
     }
   }
-  console.log(orders);
   return res.status(200).send(products);
 }
 
