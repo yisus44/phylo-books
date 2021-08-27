@@ -13,13 +13,13 @@ async function checkout(req, res) {
       payment_method: id,
       confirm: true,
     });
-    await res.send('succesful');
     const order = new Order({
       user: user_id,
       product: product_id,
       stripe_id: id,
     });
     await order.save();
+    await res.send('succesful');
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.raw.message });
@@ -27,7 +27,8 @@ async function checkout(req, res) {
 }
 
 async function getAllOrders(req, res) {
-  //This whole function is O(m*n^2) but i really havent thougt of something better so future me try to optimize this if possible
+  //Maybe we can try to delete the forloop and update the condition to
+  //products=Product.findAll({_id:order.product })
   const { _id } = req.user;
   const orders = await Order.find({ user: _id });
   const products = [];
@@ -38,7 +39,7 @@ async function getAllOrders(req, res) {
       products.push({ product, order });
     }
   }
-  console.log(products);
+  console.log(orders);
   return res.status(200).send(products);
 }
 
