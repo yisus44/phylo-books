@@ -19,7 +19,7 @@ async function checkout(req, res) {
       stripe_id: id,
     });
     await order.save();
-    await res.send('succesful');
+    return res.send('succesful');
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.raw.message });
@@ -39,7 +39,7 @@ async function getAllOrders(req, res) {
       products.push({ product, order });
     }
   }
-  console.log(orders);
+  console.log();
   return res.status(200).send(products);
 }
 
