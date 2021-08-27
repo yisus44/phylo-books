@@ -5,6 +5,7 @@ const Stripe = require('stripe');
 const stripe = new Stripe(process.env.STRIPE_KEY);
 async function checkout(req, res) {
   const { amount, id, user_id, product_id } = req.body;
+  console.log(user_id, product_id);
   try {
     const payment = await stripe.paymentIntents.create({
       amount,
@@ -19,7 +20,6 @@ async function checkout(req, res) {
       stripe_id: id,
     });
     await order.save();
-    console.log(order);
     return res.send('succesful');
   } catch (error) {
     console.log(error);
