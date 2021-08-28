@@ -1,7 +1,12 @@
 const helmet = require('helmet');
 const cors = require('cors');
 
-const { productRouter, userRouter, ordersRouter } = require('./routes/index');
+const {
+  productRouter,
+  userRouter,
+  ordersRouter,
+  reviewRouter,
+} = require('./routes/index');
 
 const express = require('express');
 const app = express();
@@ -11,7 +16,7 @@ app.use(express.json());
 app.use(productRouter);
 app.use(userRouter);
 app.use(ordersRouter);
-
+app.use(reviewRouter);
 // app.use(helmet());
 
 app.use(function (req, res, next) {
