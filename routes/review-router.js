@@ -11,9 +11,10 @@ const auth = require('../middlewares/auth.js');
 
 reviewRouter.post('/api/review', auth, addReview);
 reviewRouter.put('/api/review', auth, updateReview);
-
-reviewRouter.get('/api/review/products/me', getReviewByField);
-reviewRouter.get('/api/review/products', getProductsReview);
+//get all request for a single product
+reviewRouter.get('/api/review/products/:product_id', getProductsReview);
+//this route is for knowing if a given user have given an review
+reviewRouter.get('/api/review/products/:product_id/:user_id', getReviewByField);
 reviewRouter.get('/api/review/:id', getReviewById);
 
 module.exports = reviewRouter;

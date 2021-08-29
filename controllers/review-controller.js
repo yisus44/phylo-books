@@ -66,7 +66,7 @@ async function updateReview(req, res) {
 
 async function getReviewByField(req, res) {
   try {
-    const { user_id, product_id } = req.body;
+    const { user_id, product_id } = req.params;
     const product = product_id;
     const user = user_id;
 
@@ -82,9 +82,9 @@ async function getReviewByField(req, res) {
 }
 async function getProductsReview(req, res) {
   try {
-    const { user_id, product_id } = req.body;
+    const { product_id } = req.params;
     const product = product_id;
-    const user = user_id;
+    console.log(req.params)
 
     const reviews = await Review.find({
       product,
