@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const Review = require('../models/Review');
 
 const reactions = ['LIKE', 'DISLIKE', 'REPORT'];
@@ -84,7 +82,7 @@ async function getProductsReview(req, res) {
   try {
     const { product_id } = req.params;
     const product = product_id;
-    console.log(req.params)
+    console.log(req.params);
 
     const reviews = await Review.find({
       product,
